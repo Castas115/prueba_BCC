@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addRecipeForm = document.getElementById('addRecipeForm');
+    const submitButton = document.getElementById('submitButton');
     const recipeList = document.getElementById('recipeList');
     let editingRecipeId = null;
 
@@ -22,9 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             await addRecipe(recipe);
         }
-        
+
         addRecipeForm.reset();
-        document.getElementById('submitButton').textContent = 'Add Recipe';
+        submitButton.textContent = 'Add Recipe';
         loadRecipes();
     });
 
@@ -83,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('ingredients').value = parseIngredients(recipe.ingredients);
         document.getElementById('instructions').value = recipe.instructions;
         document.getElementById('category').value = recipe.category;
-        document.getElementById('submitButton').textContent = 'Update Recipe';
+        submitButton.textContent = 'Update Recipe';
     };
 
     window.deleteRecipe = async (id) => {
