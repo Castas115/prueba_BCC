@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function updateRecipe(id, recipe) {
         try {
+        recipe.ingredients = JSON.stringify(recipe.ingredients);
             const response = await fetch(`/api/recipes/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
