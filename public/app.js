@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             recipeElement.innerHTML = `
                 <h3>${recipe.name}</h3>
                 <p><strong>Category:</strong> ${recipe.category}</p>
-                <p><strong>Ingredients:</strong> ${JSON.parse(recipe.ingredients).join(', ')}</p>
+                <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
                 <p><strong>Instructions:</strong> ${recipe.instructions}</p>
                 <button onclick="editRecipe(${recipe.id})">Edit</button>
                 <button onclick="deleteRecipe(${recipe.id})">Delete</button>
@@ -68,12 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
             recipeList.appendChild(recipeElement);
         });
     }
-
     window.editRecipe = async (id) => {
         editingRecipeId = id;
         const recipe = await getRecipe(id);
         document.getElementById('name').value = recipe.name;
-        document.getElementById('ingredients').value = JSON.parse(recipe.ingredients).join(', ');
+        document.getElementById('ingredients').value = recipe.ingredients;
         document.getElementById('instructions').value = recipe.instructions;
         document.getElementById('category').value = recipe.category;
         submitButton.textContent = 'Update Recipe';
